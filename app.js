@@ -34,6 +34,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+
 // Express View engine setup
 
 app.use(require('node-sass-middleware')({
@@ -69,8 +70,12 @@ app.use(session({
   secret: 'irongenerator',
   resave: true,
   saveUninitialized: true,
-  store: new MongoStore({ mongooseConnection: mongoose.connection })
-}))
+  store: new MongoStore( { 
+    mongooseConnection: mongoose.connection,
+    ttl: 24 * 60 * 60 // 1 day 
+  })
+}));
+
 app.use(flash());
 require('./passport')(app);
 
@@ -81,5 +86,9 @@ app.use('/', index);
 const authRoutes = require('./routes/auth');
 app.use('/auth', authRoutes);
 
+
+const profileRoutes = require('./routes/profile');
+app.use('/profile', profileRoutes);
+      
 
 module.exports = app;

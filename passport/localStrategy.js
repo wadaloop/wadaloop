@@ -3,8 +3,13 @@ const LocalStrategy = require('passport-local').Strategy;
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 
-passport.use(new LocalStrategy((username, password, next) => {
-  User.findOne({ username }, (err, foundUser) => {
+const path = require("path");
+const app_name = require("../package.json").name;
+const debug = require("debug")(`${app_name}:${path.basename(__filename).split(".")[0]}`);
+
+passport.use(
+  new LocalStrategy((username, password, next) => {
+  User.findOne({ email: username }, (err, foundUser) => {
     if (err) {
       next(err);
       return;

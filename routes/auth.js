@@ -7,11 +7,12 @@ const User = require("../models/User");
 const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
-
+//GET LogIn
 authRoutes.get("/login", (req, res, next) => {
   res.render("auth/login", { "message": req.flash("error") });
 });
 
+//POST Login
 authRoutes.post("/login", passport.authenticate("local", {
   successRedirect: "/",
   failureRedirect: "/auth/login",
@@ -19,20 +20,21 @@ authRoutes.post("/login", passport.authenticate("local", {
   passReqToCallback: true
 }));
 
+//GET SignUp
 authRoutes.get("/signup", (req, res, next) => {
   res.render("auth/signup");
 });
 
+//POST SignUp
 authRoutes.post("/signup", (req, res, next) => {
-  const username = req.body.username;
-  const password = req.body.password;
-  const rol = req.body.role;
-  if (username === "" || password === "") {
-    res.render("auth/signup", { message: "Indicate username and password" });
+  const { username, email, password } = req.body;
+
+  if (username === "" || email === "" ||  password === "") {
+    res.render("auth/signup", { message: "Indicate username, email and password" });
     return;
   }
 
-  User.findOne({ username }, "username", (err, user) => {
+  User.findOne({ email }).then(user => {
     if (user !== null) {
       res.render("auth/signup", { message: "The username already exists" });
       return;
@@ -43,8 +45,8 @@ authRoutes.post("/signup", (req, res, next) => {
 
     const newUser = new User({
       username,
-      password: hashPass,
-      role:"teacher"
+      email,
+      password: hashPass
     });
 
     newUser.save((err) => {
