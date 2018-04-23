@@ -6,18 +6,18 @@ const Product = require("../models/Product");
 const ensureLoggedIn = require("../middlewares/ensureLoggedIn");
 
 
-profileRoutes.get("/profile", ensureLoggedIn("/login"), (req, res, next) => {
+profileRoutes.get("/", ensureLoggedIn("/login"), (req, res, next) => {
   res.render("profile");
 });
 
-profileRoutes.post("/profile", (req, res, next) => {
+profileRoutes.post("/", (req, res, next) => {
   console.log(req.body);
     const productTitle = req.body.productTitle
     const productDescription = req.body.productDescription
     const productPrice = req.body.productPrice
     //const idUser = req.body._id;
     console.log("-------------------")
-    console.log(user._id)
+//    console.log(user._id)
     const newProduct = new Product({
       title: productTitle,
       description: productDescription,
