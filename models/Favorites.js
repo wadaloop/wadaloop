@@ -1,13 +1,12 @@
 const mongoose = require('mongoose');
 const Schema   = mongoose.Schema;
 const User = require("../models/User");
+const Product = require("../models/Product");
 
-const productSchema = new Schema({
-  title: String,
-  description: String,
-  price: Number,
+const favoritesSchema = new Schema({
   user: { type: Schema.Types.ObjectId, ref: 'User' },
-  //photo: String
+  product: { type: Schema.Types.ObjectId, ref: 'Product' },
+  
 }, {
   timestamps: {
     createdAt: 'created_at',
@@ -15,5 +14,5 @@ const productSchema = new Schema({
   }
 });
 
-const Product = mongoose.model('Product', productSchema);
-module.exports = Product;
+const Favorites = mongoose.model('Favorites', favoritesSchema);
+module.exports = Favorites;
