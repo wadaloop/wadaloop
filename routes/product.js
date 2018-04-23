@@ -5,6 +5,7 @@ const Product = require("../models/Product");
 const Favorite = require("../models/Favorite");
 
 
+//-------------SHOW PRODUCT---------------------
 productRoutes.get("/:id", (req, res, next) => {
   const id = req.params.id;
 
@@ -16,14 +17,12 @@ productRoutes.get("/:id", (req, res, next) => {
   })
 })
 
-
+//-------------CREATE FAVORITE PRODUCT---------------------
 productRoutes.get("/:id/favorite", (req, res, next) => {
   const favoriteInfo = {
     favoriteProduct: req.body.product,
     user: req.session.passport.user
-
   }
-
   const newFavorite = new Favorite(favoriteInfo);
 
   newFavorite.save( (err) => {
@@ -31,10 +30,10 @@ productRoutes.get("/:id/favorite", (req, res, next) => {
       next(err);
       return;
     }
+    res.redirect("/favorites");
+})
+})
 
-    res.redirect("/profile");
-})
-})
 
 
 module.exports = productRoutes;
