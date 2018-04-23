@@ -5,4 +5,17 @@ body {
 a {
   color: #00B7FF; }
 
+/* All product list */
+.all-list-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: aqua; }
+
+.product-item {
+  width: 30%;
+  margin: 15px; }
+
+.product-item img {
+  width: 50%; }
+
 /*# sourceMappingURL=style.css.map */
