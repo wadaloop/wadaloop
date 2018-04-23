@@ -1,4 +1,4 @@
-<form action="/profile" method="POST">
+<form action="/profile" method="POST" enctype="multipart/form-data">
   <div>
     <label for="productTitle">Product title:</label>
     <input type="text" name="productTitle">
@@ -11,10 +11,10 @@
     <label for="productPrice">Price:</label>
     <input type="text" name="productPrice">
   </div>
- {{!--  <div>
+  <div>
     <label for="productPhoto">Photo:</label>
     <input type="file" name="productPhoto">
-  </div> --}}
+  </div>
   <div>
     <input type="submit" value="Upload product">
   </div>

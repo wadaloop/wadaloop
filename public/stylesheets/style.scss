@@ -3,6 +3,19 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+a { color: #00B7FF; }
+
+
+/* All product list */
+.all-list-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: aqua;
 }
+
+.product-item {
+  width: 30%;
+  margin: 15px;
+}
+
+.product-item img { width: 50%; }

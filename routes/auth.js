@@ -75,8 +75,6 @@ authRoutes.post("/profile", (req, res, next) => {
       description: productDescription,
       price: productPrice,
       photo: productPhoto,
-      // ENTRAR DENTRO DEL USUARIO Y DECIR QUE SELLER: TRUE
-      // idUser: idUser
     });
 
     newProduct.save((err) => {
