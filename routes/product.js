@@ -5,6 +5,9 @@ const Product = require("../models/Product");
 const Favorite = require("../models/Favorite");
 
 
+
+
+
 //-------------SHOW PRODUCT---------------------
 productRoutes.get("/:id", (req, res, next) => {
   const id = req.params.id;
