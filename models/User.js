@@ -4,7 +4,11 @@ const Schema   = mongoose.Schema;
 const userSchema = new Schema({
   username: String,
   email: String,
-  password: String
+  password: String,
+  seller: { type: Boolean,
+            default: false
+  },
+  postalCode: Number
 }, {
   timestamps: {
     createdAt: 'created_at',
