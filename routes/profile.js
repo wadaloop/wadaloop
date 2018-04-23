@@ -3,13 +3,17 @@ const passport = require('passport');
 const profileRoutes = express.Router();
 const User = require("../models/User");
 const Product = require("../models/Product");
+const Favorite = require("../models/Favorite");
 const ensureLoggedIn = require("../middlewares/ensureLoggedIn");
 
 
+
+//-----------------PROFILE--------------------
 profileRoutes.get("/", ensureLoggedIn("/login"), (req, res, next) => {
   res.render("profile");
 });
 
+//----------------CREATE PRODUCT--------------
 profileRoutes.post("/", (req, res, next) => {
   console.log(req.body);
     const productTitle = req.body.productTitle
