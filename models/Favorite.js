@@ -3,10 +3,10 @@ const Schema   = mongoose.Schema;
 const User = require("../models/User");
 const Product = require("../models/Product");
 
-const favoritesSchema = new Schema({
+const favoriteSchema = new Schema({
+  favoriteProduct: { type: Schema.Types.ObjectId, ref: 'Product' },
   user: { type: Schema.Types.ObjectId, ref: 'User' },
-  product: { type: Schema.Types.ObjectId, ref: 'Product' },
-  
+
 }, {
   timestamps: {
     createdAt: 'created_at',
@@ -14,5 +14,5 @@ const favoritesSchema = new Schema({
   }
 });
 
-const Favorites = mongoose.model('Favorites', favoritesSchema);
-module.exports = Favorites;
+const Favorite = mongoose.model('Favorite', favoritesSchema);
+module.exports = Favorite;

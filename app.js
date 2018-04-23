@@ -89,6 +89,9 @@ app.use('/auth', authRoutes);
 
 const profileRoutes = require('./routes/profile');
 app.use('/profile', profileRoutes);
+
+const productRoutes = require('./routes/product');
+app.use('/product', productRoutes);
       
 
 module.exports = app;

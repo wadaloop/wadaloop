@@ -38,5 +38,28 @@ profileRoutes.post("/", (req, res, next) => {
 
 });
 
+/* profileRoutes.get("/favorites", ensureLoggedIn("/login"), (req, res, next)=> {
+    const favoriteInfo = {
+      favoriteProduct: req.body.product,
+      user: req.session.passport.user
+
+    }
+  
+    const newFavorite = new Favorite(favoriteInfo);
+  
+    newFavorite.save( (err) => {
+      if(err) {
+        next(err);
+        return;
+      }
+  
+      res.redirect("/dashboard");
+    } );
+  }); */
+  
+
+
+
+
 
 module.exports = profileRoutes;
