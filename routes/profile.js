@@ -7,12 +7,23 @@ const Product = require("../models/Product");
 const Favorite = require("../models/Favorite");
 const ensureLoggedIn = require("../middlewares/ensureLoggedIn");
 const uploadCloud = require("../middlewares/cloudinary.js");
-
+const onlyMe = require('../middlewares/onlyMe');
 
 //-----------------PROFILE--------------------
-profileRoutes.get("/", ensureLoggedIn("/login"), (req, res, next) => {
 
-  res.render("profile", {user: req.user});
+
+profileRoutes.get("/:id", ensureLoggedIn("/auth/login"), onlyMe, (req, res, next) => {
+  let id = req.params.id;
+
+  User.findById(id)
+  .then(user => {
+    console.log(user)
+    res.render("profile", {user})
+  })
+  .catch(err => {
+    console.log(err);
+    next(err);
+  })
 });
 
 
@@ -31,10 +42,10 @@ profileRoutes.post("/edit/:id",uploadCloud.single("profilePhoto"),(req, res, nex
     });
   }
 );
-
+//---------------CREAR PRODUCTO---------------
 profileRoutes.post(
-  "/",
-  uploadCloud.single("productPhoto"),
+  "/:id", ensureLoggedIn("/auth/login"),
+  uploadCloud.single("productPhoto"), onlyMe,
   (req, res, next) => {
     const productTitle = req.body.productTitle;
     const productDescription = req.body.productDescription;

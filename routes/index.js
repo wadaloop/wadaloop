@@ -7,6 +7,7 @@ const Product = require("../models/Product");
 router.get("/", (req, res, next) => {
   Product.find()
   .then(theProduct => {
+    
     res.render("index", { user: req.user, theProduct });
   })
   .catch(err => { console.log(err) })

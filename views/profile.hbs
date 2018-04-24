@@ -9,7 +9,11 @@
 </form>
 
 
-<form action="/profile" method="POST" enctype="multipart/form-data">
+<h2>FAVORITOS</h2>
+<a href="/favorite">Ver mis Favoritos!</a>
+
+
+<form action="/profile/{{user._id}}" method="POST" enctype="multipart/form-data">
   <div>
     <label for="productTitle">Product title:</label>
     <input type="text" name="productTitle">
@@ -32,7 +36,8 @@
 </form>
 
 
-<h3>Pendientes</h3>
-<ul>
-<li></li>
-</ul>
+
+
+
+
+
