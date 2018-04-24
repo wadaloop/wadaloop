@@ -1,9 +1,14 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+var lat = parseFloat(document.getElementById("lat").innerHTML);
+var long = parseFloat(document.getElementById("long").innerHTML);
+console.log(lat)
+console.log(long)
+
   function startMap() {
     const ironhackBCN = {
-      lat: 41.3977381,
-      lng: 2.190471916,
+      lat: lat,
+      lng: long,
       travelMode: 'DRIVING'
     };
     const map = new google.maps.Map(

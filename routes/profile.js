@@ -57,7 +57,7 @@ profileRoutes.post(
       user: req.session.passport.user,
       imgName: imgName,
       imgPath: imgPath,
-      location: location
+      APIlocation: location
     });
 
     newProduct.save(err => {
