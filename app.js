@@ -91,6 +91,10 @@ app.use('/profile', profileRoutes);
 
 const productRoutes = require('./routes/product');
 app.use('/product', productRoutes);
+
+
+const favoriteRoutes = require('./routes/favorite');
+app.use('/favorite', favoriteRoutes);
       
 
 module.exports = app;

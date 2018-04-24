@@ -11,7 +11,11 @@
 <h3> {{ theProduct.price }} </h3>
 
 
-<a href="/product/:id/favorite"> Añadir a Favoritos </a>
+<img src="{{theProduct.imgPath}}" alt="{{theProduct.imgName}}">
+
+
+
+<a href="/favorite/{{theProduct._id}}"> Añadir a Favoritos </a>
 
 
 
