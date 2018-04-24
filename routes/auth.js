@@ -20,8 +20,7 @@ authRoutes.post(
     failureRedirect: "/auth/login",
     failureFlash: true,
     passReqToCallback: true
-  },
-  (req, res, next) => { res.render("index.hbs") })
+  })
 );
 
 //------------------GET SignUp----------------------------
