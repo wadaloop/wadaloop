@@ -7,33 +7,33 @@
 
 <nav>
   <ul>
-    {{#if user }}
+  {{#if user }}
     <li>
       <a href="/auth/logout">Log Out</a>
     </li>
     <li>
       <a href="/profile">Profile</a>
     </li>
-    {{else}}
+  {{else}}
     <li>
       <a href="/auth/signup">Sign Up</a>
     </li>
     <li>
       <a href="/auth/login">Log In</a>
     </li>
-    {{/if}}
+  {{/if}}
   </ul>
 </nav>
 
 <h2>Product list</h2>
 <div class="all-list-wrapper">
-  {{#each theProduct}}
+{{#each theProduct}}
   <a href="/product/{{this._id}}" class="product-item">
     <img src="{{this.imgPath}}" alt="{{this.title}}">
     <h3>{{this.title}}</h3>
     <p>{{this.description}}</p>
   </a>
-  {{else}}
+{{else}}
   <p>There are no products yet!</p>
-  {{/each}}
+{{/each}}
 </div>

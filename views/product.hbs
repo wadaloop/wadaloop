@@ -1,28 +1,12 @@
 <h2> Product </h2>
 
 <img src="{{theProduct.imgPath}}" alt="{{theProduct.imgName}}">
-<h3>{{ theProduct.title }}</h3>
-<p>{{ theProduct.description }}</p>
-<h4>{{ theProduct.price }}</h4>
+<h3>{{theProduct.title}}</h3>
+<p>{{theProduct.description}}</p>
+<h4>{{theProduct.price}}</h4>
 
-<a href="#">Buy</a>
-
-<img src="{{theProduct.imgPath}}" alt="{{theProduct.imgName}}">
-
-
-
+<a href="/profile/pending/{{theProduct._id}}">Buy</a>
+<br>
 <a href="/favorite/{{theProduct._id}}"> Añadir a Favoritos </a>
 
-
-
-
-
-  
-   
-
-
-
-
-
-
-
+<div id="map"></div>

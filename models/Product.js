@@ -9,7 +9,9 @@ const productSchema = new Schema(
     price: Number,
     user: { type: Schema.Types.ObjectId, ref: "User" },
     imgName: String,
-    imgPath: String
+    imgPath: String,
+    APItypePoint: String,
+    APIlocation: { type: { type: String }, coordinates: [Number] }
   },
   {
     timestamps: {

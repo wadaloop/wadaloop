@@ -10,34 +10,24 @@ const uploadCloud = require("../middlewares/cloudinary.js");
 
 
 //-----------------PROFILE--------------------
-
-
 profileRoutes.get("/", ensureLoggedIn("/login"), (req, res, next) => {
 
   res.render("profile", {user: req.user});
 });
-//---------------CREAR PRODUCTO---------------
-profileRoutes.post(
-  "/profilePhoto",
-  uploadCloud.single("profilePhoto"),
-  (req, res, next) => {
-    const imgProfileName = req.file.originalname;
-    const imgProfilePath = req.file.url;
 
-    const newProfileImg = new Product({
+
+profileRoutes.post("/edit/:id",uploadCloud.single("profilePhoto"),(req, res, next) => {
+    const updates = {
       user: req.session.passport.user,
-      imgProfileName: imgProfileName,
-      imgProfilePath: imgProfilePath
-    });
-
-    newProfileImg.save(err => {
+      imgProfile: req.file.url
+    }
+    console.log(updates)
+    User.findByIdAndUpdate( updates.user, updates.imgProfile, (err) => {
       if (err) {
         console.log("--------------")
         console.log(err)
         res.render("profile", { message: "Something went wrong" });
-      } else {
-        res.render("profile");
-      }
+      } else { res.render("profile"); }
     });
   }
 );
@@ -72,5 +62,6 @@ profileRoutes.post(
     });
   }
 );
+
 
 module.exports = profileRoutes;
