@@ -1,20 +1,26 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const userSchema = new Schema({
-  username: String,
-  email: String,
-  password: String,
-  seller: { type: Boolean,
-            default: false
+const userSchema = new Schema(
+  {
+    username: String,
+    email: String,
+    password: String,
+    seller: { type: Boolean, default: false },
+    imgProfile: {
+      type: String,
+      default:
+        "http://res.cloudinary.com/deavo73zk/image/upload/v1524561053/anonimo-icon.png"
+    },
+    postalCode: Number
   },
-  postalCode: Number
-}, {
-  timestamps: {
-    createdAt: 'created_at',
-    updatedAt: 'updated_at'
+  {
+    timestamps: {
+      createdAt: "created_at",
+      updatedAt: "updated_at"
+    }
   }
-});
+);
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model("User", userSchema);
 module.exports = User;

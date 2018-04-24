@@ -1,5 +1,5 @@
 const express = require("express");
-const passport = require('passport');
+const passport = require("passport");
 const authRoutes = express.Router();
 const User = require("../models/User");
 
@@ -9,16 +9,20 @@ const bcryptSalt = 10;
 
 //-----------------GET LogIn----------------------------
 authRoutes.get("/login", (req, res, next) => {
-  res.render("auth/login", { "message": req.flash("error") });
+  res.render("auth/login", { message: req.flash("error") });
 });
 
 //------------------POST Login----------------------------
-authRoutes.post("/login", passport.authenticate("local", {
-  successRedirect: "/",
-  failureRedirect: "/auth/login",
-  failureFlash: true,
-  passReqToCallback: true
-}));
+authRoutes.post(
+  "/login",
+  passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/auth/login",
+    failureFlash: true,
+    passReqToCallback: true
+  },
+  (req, res, next) => { res.render("index.hbs") })
+);
 
 //------------------GET SignUp----------------------------
 authRoutes.get("/signup", (req, res, next) => {
@@ -26,66 +30,45 @@ authRoutes.get("/signup", (req, res, next) => {
 });
 
 //-----------------POST SignUp--------------------------
-authRoutes.post("/signup", (req, res, next) => {
-  const { username, email, password } = req.body;
+authRoutes.post(
+  "/signup",
+  (req, res, next) => {
+    const { username, email, password } = req.body;
 
-  if (username === "" || email === "" ||  password === "") {
-    res.render("auth/signup", { message: "Indicate username, email and password" });
-    return;
-  }
-
-  User.findOne({ email }).then(user => {
-    if (user !== null) {
-      res.render("auth/signup", { message: "The username already exists" });
+    if (username === "" || email === "" || password === "") {
+      res.render("auth/signup", {
+        message: "Indicate username, email and password"
+      });
       return;
     }
 
-    const salt = bcrypt.genSaltSync(bcryptSalt);
-    const hashPass = bcrypt.hashSync(password, salt);
+    User.findOne({ email })
+      .then(user => {
+        if (user !== null) {
+          res.render("auth/signup", { message: "The username already exists" });
+          return;
+        }
+        const salt = bcrypt.genSaltSync(bcryptSalt);
+        const hashPass = bcrypt.hashSync(password, salt);
 
-    const newUser = new User({
-      username,
-      email,
-      password: hashPass
-    });
+        const newUser = new User({
+          username,
+          email,
+          password: hashPass
+        });
 
-    newUser.save((err) => {
-      if (err) {
-        res.render("auth/signup", { message: "Something went wrong" });
-      } else {
-        res.redirect("/");
-      }
-    });
-  });
-});
+        newUser.save(err => {
+          if (err) {
+            res.render("auth/signup", { message: "Something went wrong" });
+          } else {
+            res.redirect("/");
+          }
+        });
+      })
+      .catch(e => console.log(e));
+  }
+);
 
-authRoutes.get("/profile", (req, res, next) => {
-  res.render("auth/profile");
-});
-
-authRoutes.post("/profile", (req, res, next) => {
-  console.log(req.body);
-
-  const productTitle = req.body.productTitle;
-  const productDescription = req.body.productDescription;
-//  const idUser = req.body._id;
-
-    const newProduct = new Product({
-      title: productTitle,
-      description: productDescription,
-      price: productPrice,
-      photo: productPhoto,
-    });
-
-    newProduct.save((err) => {
-      if (err) {
-        res.render("auth/profile", { message: "Something went wrong" });
-      } else {
-        res.redirect("/");
-      }
-    });
-
-});
 
 authRoutes.get("/logout", (req, res) => {
   req.logout();

@@ -17,6 +17,31 @@ profileRoutes.get("/", ensureLoggedIn("/login"), (req, res, next) => {
 });
 
 profileRoutes.post(
+  "/profilePhoto",
+  uploadCloud.single("profilePhoto"),
+  (req, res, next) => {
+    const imgProfileName = req.file.originalname;
+    const imgProfilePath = req.file.url;
+
+    const newProfileImg = new Product({
+      user: req.session.passport.user,
+      imgProfileName: imgProfileName,
+      imgProfilePath: imgProfilePath
+    });
+
+    newProfileImg.save(err => {
+      if (err) {
+        console.log("--------------")
+        console.log(err)
+        res.render("profile", { message: "Something went wrong" });
+      } else {
+        res.render("profile");
+      }
+    });
+  }
+);
+
+profileRoutes.post(
   "/",
   uploadCloud.single("productPhoto"),
   (req, res, next) => {
@@ -41,7 +66,7 @@ profileRoutes.post(
         console.log("error");
         res.render("profile", { message: "Something went wrong" });
       } else {
-        res.redirect("/");
+        res.render("profile");
       }
     });
   }

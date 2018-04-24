@@ -1,3 +1,14 @@
+<form action="/profilePhoto" method="POST" enctype="multipart/form-data">
+  <div>
+    <label for="profilePhoto">Upload my profile photo:</label>
+    <input type="file" name="profilePhoto">
+  </div>
+  <div>
+    <input type="submit" class="btn" value="Upload">
+  </div>
+</form>
+
+
 <form action="/profile" method="POST" enctype="multipart/form-data">
   <div>
     <label for="productTitle">Product title:</label>
@@ -16,6 +27,6 @@
     <input type="file" name="productPhoto">
   </div>
   <div>
-    <input type="submit" value="Upload product">
+    <input type="submit" class="btn" value="Upload product">
   </div>
 </form>
