@@ -20,6 +20,15 @@ nav li {
   display: inline;
   margin-right: 2rem; }
 
+nav li a {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: black;
+  text-decoration: none; }
+
+nav li a:hover {
+  color: #00B7FF; }
+
 /* All product list */
 .all-list-wrapper {
   display: flex;

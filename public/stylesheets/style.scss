@@ -13,6 +13,8 @@ a { color: #00B7FF; }
 nav { margin-bottom: 4rem; }
 nav ul { margin: 0 0 4rem; padding: 0; }
 nav li { display: inline; margin-right: 2rem; }
+nav li a { text-transform: uppercase; font-weight: bold; color: black; text-decoration: none; }
+nav li a:hover { color: #00B7FF; }
 
 /* All product list */
 .all-list-wrapper {
