@@ -22,6 +22,9 @@
     <li>
       <a href="/auth/logout">Log Out</a>
     </li>
+    <li class="last-li">
+      <p>Hello, {{user.username}}</p>
+    </li>
   {{else}}
     <li>
       <a href="/auth/login">Log In</a>
@@ -32,10 +35,6 @@
   {{/if}}
   </ul>
 </nav>
-
-{{#if user }}
-<p>Hello, {{user.username}}</p>
-{{/if}}
 
 {{{body}}}
 

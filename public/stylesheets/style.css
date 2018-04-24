@@ -29,6 +29,12 @@ nav li a {
 nav li a:hover {
   color: #00B7FF; }
 
+.last-li {
+  padding-left: 1rem; }
+
+.last-li p {
+  display: inline; }
+
 /* All product list */
 .all-list-wrapper {
   display: flex;
@@ -37,7 +43,8 @@ nav li a:hover {
 
 .product-item {
   width: 30%;
-  margin: 15px; }
+  margin: 15px;
+  background-color: white; }
 
 .product-item img {
   width: 50%; }
