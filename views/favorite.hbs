@@ -2,9 +2,10 @@
 <ul>
   {{#each favorites}}
   <p>{{this._id}}</p>
-  <a href="/product/{{product.id}}">view Product</a>
+  <a href="/product/{{this.product.id}}">view Product</a>
   <form action="/favorite/{{_id}}/delete" method="post">
     <button type="submit">Delete</button>
+  </form>  
 
   {{/each}}
 </ul>
