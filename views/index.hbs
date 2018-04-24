@@ -1,31 +1,6 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
-
-{{#if user }}
-<p>Hello, {{user.username}}</p>
-{{/if}}
-
-<nav>
-  <ul>
-  {{#if user }}
-    <li>
-      <a href="/auth/logout">Log Out</a>
-    </li>
-    <li>
-      <a href="/profile">Profile</a>
-    </li>
-  {{else}}
-    <li>
-      <a href="/auth/signup">Sign Up</a>
-    </li>
-    <li>
-      <a href="/auth/login">Log In</a>
-    </li>
-  {{/if}}
-  </ul>
-</nav>
 
 <h2>Product list</h2>
+
 <div class="all-list-wrapper">
 {{#each theProduct}}
   <a href="/product/{{this._id}}" class="product-item">

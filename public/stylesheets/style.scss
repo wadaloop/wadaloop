@@ -3,14 +3,22 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
+h1, h2, h3, p, a {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 a { color: #00B7FF; }
 
+nav { margin-bottom: 4rem; }
+nav ul { margin: 0 0 4rem; padding: 0; }
+nav li { display: inline; margin-right: 2rem; }
 
 /* All product list */
 .all-list-wrapper {
   display: flex;
   flex-wrap: wrap;
-  background-color: aqua;
+  background-color: lightgray;
 }
 
 .product-item {
