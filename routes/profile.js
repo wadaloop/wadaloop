@@ -13,9 +13,10 @@ const uploadCloud = require("../middlewares/cloudinary.js");
 
 
 profileRoutes.get("/", ensureLoggedIn("/login"), (req, res, next) => {
-  res.render("profile");
-});
 
+  res.render("profile", {user: req.user});
+});
+//---------------CREAR PRODUCTO---------------
 profileRoutes.post(
   "/profilePhoto",
   uploadCloud.single("profilePhoto"),

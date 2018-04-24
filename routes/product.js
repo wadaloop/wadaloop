@@ -18,23 +18,6 @@ productRoutes.get("/:id", (req, res, next) => {
   })
 })
 
-//-------------CREATE FAVORITE PRODUCT---------------------
-productRoutes.get("/:id/favorite", (req, res, next) => {
-  const favoriteInfo = {
-    favoriteProduct: req.body.product,
-    user: req.session.passport.user
-  }
-  const newFavorite = new Favorite(favoriteInfo);
-
-  newFavorite.save( (err) => {
-    if(err) {
-      next(err);
-      return;
-    }
-    res.redirect("/favorites");
-})
-})
-
 
 
 module.exports = productRoutes;
