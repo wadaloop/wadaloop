@@ -14,11 +14,14 @@ const onlyMe = require('../middlewares/onlyMe');
 
 profileRoutes.get("/:id", ensureLoggedIn("/auth/login"), onlyMe, (req, res, next) => {
   let id = req.params.id;
-
-  User.findById(id)
-  .then(user => {
-    console.log(user)
-    res.render("profile", {user})
+  return Promise.all([
+    User.findById(id),
+    Product.find({user:id})
+  ])
+  .then(products => {
+    user = products[0]
+    productsTrim = products.splice(1)[0]
+    res.render("profile", {productsTrim, user})
   })
   .catch(err => {
     console.log(err);
@@ -27,7 +30,7 @@ profileRoutes.get("/:id", ensureLoggedIn("/auth/login"), onlyMe, (req, res, next
 });
 
 
-profileRoutes.post("/edit/:id",uploadCloud.single("profilePhoto"),(req, res, next) => {
+profileRoutes.post("/edit/:id",uploadCloud.single("profilePhoto"),ensureLoggedIn("/auth/login"), onlyMe, (req, res, next) => {
     const updates = {
       user: req.session.passport.user,
       imgProfile: req.file.url
@@ -43,10 +46,8 @@ profileRoutes.post("/edit/:id",uploadCloud.single("profilePhoto"),(req, res, nex
   }
 );
 //---------------CREAR PRODUCTO---------------
-profileRoutes.post(
-  "/:id", ensureLoggedIn("/auth/login"),
-  uploadCloud.single("productPhoto"), onlyMe,
-  (req, res, next) => {
+profileRoutes.post("/:id", ensureLoggedIn("/auth/login"), uploadCloud.single("productPhoto"), onlyMe, (req, res, next) => {
+    console.log('in')
     const productTitle = req.body.productTitle;
     const productDescription = req.body.productDescription;
     const productPrice = req.body.productPrice;
@@ -62,17 +63,30 @@ profileRoutes.post(
       imgName: imgName,
       imgPath: imgPath
     });
+    console.log(newProduct)
+    newProduct.save()
+    .then( product=> {
+      console.log(req.body)
+      console.log(req.session.passport.user)
+      res.redirect(`/profile/${req.body.user}`,{successMessagge:'Product created!'})
+    })
+    .catch(err=>{
+        console.log(err)
+        res.render(`/profile/${req.body.id}`, {errorMessagge:'Product not created'})
+      })
+      
 
-    newProduct.save(err => {
+
+
+    /* newProduct.save(err => {
       if (err) {
         console.log("error");
-        res.render("profile", { message: "Something went wrong" });
+        res.redirect("profile", { message: "Something went wrong" });
       } else {
-        res.render("profile");
+        res.redirect(`/profile/${req.body.id}`);
       }
-    });
-  }
-);
+    }); */
+  });
 
 
 module.exports = profileRoutes;

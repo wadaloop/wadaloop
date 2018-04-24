@@ -1,4 +1,4 @@
-<form action="/profilePhoto" method="POST" enctype="multipart/form-data">
+<form action="/profile/edit/{{user._id}}" method="POST" enctype="multipart/form-data">
   <div>
     <label for="profilePhoto">Upload my profile photo:</label>
     <input type="file" name="profilePhoto">
@@ -37,7 +37,16 @@
 
 
 
+<h2>Mis Productos a la Venta</h2>
 
+<ul>
+  {{#each productsTrim}}
+  <p>{{this._id}}</p>
+  <a href="/product/{{this.product}}">view Product</a>
 
+  {{!-- <form action="/favorite/{{_id}}/delete" method="post">
+    <button type="submit">Delete</button>
+  </form>  --}} 
 
-
+  {{/each}}
+</ul>
