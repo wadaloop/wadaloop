@@ -10,9 +10,25 @@ const uploadCloud = require("../middlewares/cloudinary.js");
 const onlyMe = require('../middlewares/onlyMe');
 
 //-----------------PROFILE--------------------
+profileRoutes.get("/me", ensureLoggedIn("/auth/login"), (req, res, next) => {
+  console.log(res.locals)
+  let id = res.locals.user._id
+  return Promise.all([
+    User.findById(id),
+    Product.find({user:id})
+  ])
+  .then(products => {
+    user = products[0]
+    productsTrim = products.splice(1)[0]
+    res.render("profile", {productsTrim, user})
+  })
+  .catch(err => {
+    console.log(err);
+    next(err);
+  })
+});
 
-
-profileRoutes.get("/:id", ensureLoggedIn("/auth/login"), onlyMe, (req, res, next) => {
+profileRoutes.get("/:id", ensureLoggedIn("/auth/login"), (req, res, next) => {
   let id = req.params.id;
   return Promise.all([
     User.findById(id),
@@ -68,11 +84,11 @@ profileRoutes.post("/:id", ensureLoggedIn("/auth/login"), uploadCloud.single("pr
     .then( product=> {
       console.log(req.body)
       console.log(req.session.passport.user)
-      res.redirect(`/profile/${req.body.user}`,{successMessagge:'Product created!'})
+      res.redirect("/profile/me")
     })
     .catch(err=>{
         console.log(err)
-        res.render(`/profile/${req.body.id}`, {errorMessagge:'Product not created'})
+        res.redirect("/profile/me")
       })
       
 
