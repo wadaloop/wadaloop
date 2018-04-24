@@ -1,7 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  console.log('IronGenerator JS imported successfully!');
-
   function startMap() {
     const ironhackBCN = {
       lat: 41.3977381,

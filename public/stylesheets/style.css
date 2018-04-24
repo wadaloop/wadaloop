@@ -25,9 +25,9 @@ a {
   color: beige;
   cursor: pointer; }
 
-.map {
+#map {
   display: block;
   width: 100%;
-  height: 10vh; }
+  height: 50vh; }
 
 /*# sourceMappingURL=style.css.map */
