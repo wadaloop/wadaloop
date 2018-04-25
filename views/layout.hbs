@@ -6,10 +6,37 @@
 </head>
 <body>
 
+<header>
+  <h1>{{title}}</h1>
+</header>
+
+<nav>
+  <ul>
+  {{#if user }}
+    <li>
+      <a href="/">Home</a>
+    </li>
+    <li>
+      <a href="/profile">Profile</a>
+    </li>
+    <li>
+      <a href="/auth/logout">Log Out</a>
+    </li>
+    <li class="last-li">
+      <p>Hello, {{user.username}}</p>
+    </li>
+  {{else}}
+    <li>
+      <a href="/auth/login">Log In</a>
+    </li>
+    <li>
+      <a href="/auth/signup">Sign Up</a>
+    </li>
+  {{/if}}
+  </ul>
+</nav>
+
 {{{body}}}
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC89tGpydOEjhmdwbhjvxt-V_5RPx_PYnI"></script>
-<script src="/javascripts/main.js"></script>
-<script src='/javascripts/script.js'></script>
 </body>
 </html>

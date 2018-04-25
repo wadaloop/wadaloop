@@ -9,8 +9,18 @@
 
 
 
+<p>Latitude: <span id="lat">{{theProduct.APIlocation.coordinates.[1]}}</span></p>
+<p>Length: <span id="lon">{{theProduct.APIlocation.coordinates.[0]}}</span></p>
+<br>
 <a href="/profile/pending/{{theProduct._id}}">Buy</a>
 <br>
-<a href="/favorite/{{theProduct._id}}"> Añadir a Favoritos </a>
+<a href="/favorite/{{theProduct._id}}">Add to favorites</a>
+<br>
+<br>
+<br>
 
 <div id="map"></div>
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC89tGpydOEjhmdwbhjvxt-V_5RPx_PYnI"></script>
+<script src='/javascripts/script.js'></script>

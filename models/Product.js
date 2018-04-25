@@ -21,6 +21,8 @@ const productSchema = new Schema(
   }
 );
 
+productSchema.index({ location: '2dsphere' });
+
 const Product = mongoose.model("Product", productSchema);
 
 module.exports = Product;

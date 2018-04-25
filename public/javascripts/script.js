@@ -1,22 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  console.log('IronGenerator JS imported successfully!');
-
-  function startMap() {
-    const ironhackBCN = {
-      lat: 41.3977381,
-      lng: 2.190471916,
-      travelMode: 'DRIVING'
-    };
-    const map = new google.maps.Map(
-      document.getElementById('map'),
-      {
-        zoom: 15,
-        center: ironhackBCN
-      }
-    );
-  }
+  var lat = parseFloat(document.getElementById("lat").innerHTML);
+  var lon = parseFloat(document.getElementById("lon").innerHTML);
   
-  startMap();
-
-}, false);
+    function startMap() {
+      const productPosition = { lat: lat, lng: lon };
+      const map = new google.maps.Map(
+        document.getElementById('map'),
+        {
+          zoom: 15,
+          center: productPosition
+        }
+      );
+      var marker = new google.maps.Marker({
+        position: productPosition,
+        map: map
+      });
+    }
+    
+    startMap();
+  
+  }, false);
