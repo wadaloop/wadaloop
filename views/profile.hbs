@@ -42,7 +42,9 @@
 <ul>
   {{#each productsTrim}}
   <p>{{this._id}}</p>
-  <a href="/product/{{this.product}}">view Product</a>
+  <a href="/product/{{this._id}}">view Product</a>
+  <form action="/profile/{{this._id}}/delete" method="post">
+    <button type="submit">Delete</button>
 
   {{!-- <form action="/favorite/{{_id}}/delete" method="post">
     <button type="submit">Delete</button>

@@ -27,7 +27,7 @@ profileRoutes.get("/me", ensureLoggedIn("/auth/login"), (req, res, next) => {
     next(err);
   })
 });
-
+//----------------SHOW SELLING PRODUCTS----------
 profileRoutes.get("/:id", ensureLoggedIn("/auth/login"), (req, res, next) => {
   let id = req.params.id;
   return Promise.all([
@@ -45,23 +45,7 @@ profileRoutes.get("/:id", ensureLoggedIn("/auth/login"), (req, res, next) => {
   })
 });
 
-
-profileRoutes.post("/edit/:id",uploadCloud.single("profilePhoto"),ensureLoggedIn("/auth/login"), onlyMe, (req, res, next) => {
-    const updates = {
-      user: req.session.passport.user,
-      imgProfile: req.file.url
-    }
-    console.log(updates)
-    User.findByIdAndUpdate( updates.user, updates.imgProfile, (err) => {
-      if (err) {
-        console.log("--------------")
-        console.log(err)
-        res.render("profile", { message: "Something went wrong" });
-      } else { res.render("profile"); }
-    });
-  }
-);
-//---------------CREAR PRODUCTO---------------
+//---------------CREAR PRODUCTO-----------------
 profileRoutes.post("/:id", ensureLoggedIn("/auth/login"), uploadCloud.single("productPhoto"), onlyMe, (req, res, next) => {
     console.log('in')
     const productTitle = req.body.productTitle;
@@ -90,19 +74,19 @@ profileRoutes.post("/:id", ensureLoggedIn("/auth/login"), uploadCloud.single("pr
         console.log(err)
         res.redirect("/profile/me")
       })
-      
-
-
-
-    /* newProduct.save(err => {
-      if (err) {
-        console.log("error");
-        res.redirect("profile", { message: "Something went wrong" });
-      } else {
-        res.redirect(`/profile/${req.body.id}`);
-      }
-    }); */
   });
+
+//--------------DELETE PRODUCT------------------
+profileRoutes.post("/:id/delete", ensureLoggedIn("/auth/login"), (req, res, next) => {
+  Product.findByIdAndRemove(req.params.id).then(() => {
+    res.redirect("/profile/me");
+  })
+  .catch(err => {
+    res.render("error", err);
+  });
+});
+
+  //--------------EDIT PRODUCT--------------------
 
 
 module.exports = profileRoutes;
