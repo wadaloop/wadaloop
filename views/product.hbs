@@ -1,22 +1,18 @@
 <h2> Product </h2>
 
-<img src="{{theProduct.imgPath}}" alt="{{theProduct.imgName}}">
-<h3>{{ theProduct.title }}</h3>
-<p>{{ theProduct.description }}</p>
-<h4>{{ theProduct.price }}</h4>
-
-<a href="#">Buy</a>
-
-
-
-<p>Latitude: <span id="lat">{{theProduct.APIlocation.coordinates.[1]}}</span></p>
-<p>Length: <span id="lon">{{theProduct.APIlocation.coordinates.[0]}}</span></p>
-<br>
-<a href="/profile/pending/{{theProduct._id}}">Buy</a>
-<br>
-<a href="/favorite/{{theProduct._id}}">Add to favorites</a>
-<br>
-<br>
-<br>
+<div class="all-list-wrapper">
+  <img src="{{theProduct.imgPath}}" alt="{{theProduct.imgName}}">
+  <h3>{{ theProduct.title }}</h3>
+  <p>{{ theProduct.description }}</p>
+  <h4>{{ theProduct.price }}</h4>
+  <a href="/profile/pending/{{theProduct._id}}">Buy</a>
+  <a href="/favorite/{{theProduct._id}}">Add to favorites</a>
+  <p>Latitude:
+    <span id="lat">{{theProduct.APIlocation.coordinates.[1]}}</span>
+  </p>
+  <p>Length:
+    <span id="lon">{{theProduct.APIlocation.coordinates.[0]}}</span>
+  </p>
+</div>
 
 <div id="map"></div>

@@ -6,7 +6,6 @@ const userSchema = new Schema(
     username: String,
     email: String,
     password: String,
-    seller: { type: Boolean, default: false },
     imgProfile: {
       type: String,
       default:
