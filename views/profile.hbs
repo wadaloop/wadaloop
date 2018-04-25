@@ -12,7 +12,7 @@
 <h2>FAVORITOS</h2>
 <a href="/favorite">Ver mis Favoritos!</a>
 
-
+<h2>Pon un nuevo Producto a la venta!</h2>
 <form action="/profile/{{user._id}}" method="POST" enctype="multipart/form-data">
   <div>
     <label for="productTitle">Product title:</label>
@@ -45,6 +45,10 @@
   <a href="/product/{{this._id}}">view Product</a>
   <form action="/profile/{{this._id}}/delete" method="post">
     <button type="submit">Delete</button>
+  </form>  
+  <form action="/profile/{{_id}}/edit" method="get">
+    <button type="submit">Edit</button>
+  </form>
 
   {{!-- <form action="/favorite/{{_id}}/delete" method="post">
     <button type="submit">Delete</button>

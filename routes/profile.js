@@ -78,6 +78,7 @@ profileRoutes.post("/:id", ensureLoggedIn("/auth/login"), uploadCloud.single("pr
 
 //--------------DELETE PRODUCT------------------
 profileRoutes.post("/:id/delete", ensureLoggedIn("/auth/login"), (req, res, next) => {
+  
   Product.findByIdAndRemove(req.params.id).then(() => {
     res.redirect("/profile/me");
   })
@@ -86,7 +87,31 @@ profileRoutes.post("/:id/delete", ensureLoggedIn("/auth/login"), (req, res, next
   });
 });
 
-  //--------------EDIT PRODUCT--------------------
+//--------------EDIT PRODUCT--------------------
+profileRoutes.get("/:id/edit", ensureLoggedIn("/auth/login"), (req, res, next) => {
+  
+  Product.findById(req.params.id).then(product => {
+    res.render("editProduct", {product});
+  })
+  .catch(err => {
+    res.render("error", err);
+  });
+});
 
+profileRoutes.post("/:id/edit", ensureLoggedIn("/auth/login"), uploadCloud.single("productPhoto"), (req, res, next) => {
+  const {title, description, price} = req.body;
+  let productEdited = {title, description, price}
+  if(req.file){
+    productEdited = {title, description, price, imgName:req.file.originalname, imgPath: req.file.url}; 
+  }
+  Product.findByIdAndUpdate(req.params.id, productEdited)
+    .then(() => {
+      res.redirect("/profile/me");
+    })  
+    .catch(err => {
+      res.render("error", err);
+    });
+
+});
 
 module.exports = profileRoutes;

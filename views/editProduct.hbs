@@ -1,0 +1,32 @@
+<h2>Edita tu Producto!</h2>
+
+<ul>
+    {{#with product}}
+
+    <li>{{title}}</li>
+    <li>{{description}}</li>
+    <li>{{price}}</li>
+    <img src="{{imgPath}}" alt="{{imgName}}">
+
+    {{/with}}
+</ul>
+
+{{#with product}}
+
+<form action="/profile/{{_id}}/edit" method="POST" enctype="multipart/form-data">
+    <label for="title">Título</label>
+    <input type="text" name="title" value="{{title}}">
+
+    <label for="description">Descripción</label>
+    <input type="text" name="description" value="{{description}}">
+
+    <label for="price">Precio</label>
+    <input type="text" name="price" value="{{price}}">
+
+    <label for="productPhoto">Photo:</label>
+    <input type="file" name="productPhoto">
+
+    <button type="submit">Editar</button>
+</form>
+
+{{/with}}
