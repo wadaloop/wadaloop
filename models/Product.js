@@ -12,6 +12,7 @@ const productSchema = new Schema(
     imgPath: String,
     APItypePoint: String,
     APIlocation: { type: { type: String }, coordinates: [Number] }
+    
   },
   {
     timestamps: {

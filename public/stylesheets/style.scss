@@ -46,3 +46,11 @@ nav li a:hover { color: #00B7FF; }
   width: 100%;
   height: 50vh;
 }
+
+#filter-link {
+  visibility: hidden;
+}
+
+.visible {
+  visibility: visible!important;
+}
