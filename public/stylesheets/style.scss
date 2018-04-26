@@ -1,5 +1,5 @@
 body {
-  padding: 50px;
+  padding: 50px 50px 0 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   color: #212529;
   background-color: #f8f9fa;
@@ -9,9 +9,6 @@ h1, h2, h3, p, a {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-/* tamaño */
-h1, h2, h3, p, a {}
 
 h2 {
   font-size: 2rem;
@@ -25,7 +22,22 @@ h2 {
   word-spacing: -0.15rem;
 }
 
-h1 { color: #13c1ac; }
+header {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+header img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+}
+
+h1 {
+  margin-top: 1.4rem;
+  margin-left: 1rem;
+  color: #13c1ac;
+}
 h2,
 nav li a { color: #253238; }
 a { color: #00B7FF; }
@@ -42,7 +54,7 @@ a:hover,
 .product-item { position: relative; }
 .product-item:hover { top: -2px; box-shadow: 0px 3px 5px rgba(37,50,56,.1); }
 
-nav { margin-bottom: 4rem; }
+nav { margin-bottom: 4rem; margin-top: 1rem; }
 nav ul { padding: 0; }
 nav li { display: inline; margin-right: 2rem; }
 nav li a { text-transform: uppercase; font-weight: bold; text-decoration: none; }
@@ -110,16 +122,31 @@ nav .last-li p { display: inline; }
 }
 
 #filter-link { visibility: hidden; }
-.filter { margin-bottom: 2rem; background-color: #253238; }
+.filter { margin-bottom: 2rem; background-color: lightyellow; padding: 0.5rem 1.2rem; }
 
 .visible {
   visibility: visible!important;
+}
+
+footer {
+  margin: 3rem 0 0;
+  padding: 2rem 3rem;
+  background-color: #253238;
+  color: #AEAEAE;
 }
 
 @media (max-width: 700px) {
 
   .product-item {
     width: 32%;
+  }
+
+  .product-box img {
+    width: 100%;
+  }
+
+  .col-right {
+    width: 100%;
   }
 
 }

@@ -39,12 +39,10 @@ favoriteRoutes.post("/:id/delete", ensureLoggedIn("/login"), (req, res, next) =>
 
 //-------------SHOW FAVORITE PRODUCT---------------------
 favoriteRoutes.get("/", ensureLoggedIn("/login"), (req, res, next)=>{
-  Favorite.find({user: req.user._id}, (err, myFavorites) => {
-    if (err) { return next(err); }
-
-    res.render('favorite', { favorites: myFavorites });
-  });
-
+  Favorite.find({user: req.user._id})
+  .populate('product')
+  .then(favs =>res.render('favorite', { favorites: favs }))
+  .catch(e=>console.log(e))
 });
 
 

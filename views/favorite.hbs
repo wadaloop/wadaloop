@@ -1,12 +1,12 @@
 <h2>Favorites</h2>
 <ul>
   {{#each favorites}}
-  <p>{{this._id}}</p>
-  <a href="/product/{{this.product}}">view Product</a>
+  <p>{{this.product.title}}</p>
+  <a href="/product/{{this.product._id}}">view Product</a>
+  <img src="{{this.product.imgPath}}" alt="">
   <form action="/favorite/{{_id}}/delete" method="post">
     <button type="submit">Delete</button>
-  </form>  
-
+  </form>
   {{/each}}
 </ul>
 
