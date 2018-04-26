@@ -50,7 +50,8 @@
 <h2>Mis Productos a la Venta</h2>
 <ul>
   {{#each productsTrim}}
-  <p>{{this._id}}</p>
+  <p>{{this.title}}</p>
+  <img src="{{this.imgPath}}" alt="">
   <a href="/product/{{this._id}}">view Product</a>
   <form action="/profile/{{this._id}}/delete" method="post">
     <button type="submit">Delete</button>
