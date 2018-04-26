@@ -6,7 +6,8 @@
 {{#each theProduct}}
   <a href="/product/{{this._id}}" class="product-item">
     <img src="{{this.imgPath}}" alt="{{this.title}}">
-    <h3>{{this.title}}</h3>
+    <h3 class="price">{{this.price}}</h3>
+    <h4>{{this.title}}</h4>
     <p>{{this.description}}</p>
   </a>
 {{else}}
