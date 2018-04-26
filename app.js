@@ -16,7 +16,7 @@ const flash = require("connect-flash");
 
 mongoose.Promise = Promise;
 mongoose
-  .connect(MONGO_URL, { useMongoClient: true })
+  .connect(MONGODB_URL, { useMongoClient: true })
   .then(() => {
     console.log('Connected to Mongo!')
   }).catch(err => {
