@@ -1,7 +1,9 @@
+<div class="box-section filter-box">
+  <h2>My cart</h2>
+  <a href="/cart" class="filter green">My cart list</a>
+</div>
 
 <div class="box-section filter-box">
-  
-  <a href="/cart">view my Cart!</a>
   <h2>Favorites</h2>
   <a href="/favorite" class="filter green">My favorites list</a>
 </div>
@@ -38,20 +40,20 @@
 
 <div class="box-section">
 <h2>My products for sale</h2>
-<ul>
+<div class="all-list-wrapper">
   {{#each productsTrim}}
-  <p>{{this.title}}</p>
-  <img src="{{this.imgPath}}" alt="">
-  <a href="/product/{{this._id}}">view Product</a>
-  <form action="/profile/{{_id}}/edit" method="get">
-    <input type="submit" class="btn edit" value="Edit">
-  </form>
-  <form action="/profile/{{this._id}}/delete" method="post">
-    <input type="submit" class="btn delete" value="Delete">
-  </form>  
-  {{!-- <form action="/favorite/{{_id}}/delete" method="post">
-    <button type="submit">Delete</button>
-  </form>  --}} 
+  <div class="product-item">
+    <a href="/product/{{this._id}}"><img src="{{this.imgPath}}" alt="{{this._id}}"></a>
+    <p class="m-l-10">{{this.title}}</p>
+    <form action="/profile/{{_id}}/edit" method="get">
+      <input type="submit" class="btn edit m-l-10" value="Edit">
+    </form>
+    <form action="/profile/{{this._id}}/delete" method="post">
+      <input type="submit" class="btn delete m-l-10" value="Delete">
+    </form>
+  </div>
+  {{else}}
+  <p>There are no products yet!</p>
   {{/each}}
-</ul>
+</div>
 </div>
