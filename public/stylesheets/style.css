@@ -9,6 +9,17 @@ h1, h2, h3, p, a {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
 
+/* tamaño */
+h2 {
+  font-size: 2rem;
+  letter-spacing: -0.02rem;
+  word-spacing: -0.15rem; }
+
+.product-item h4 {
+  font-size: 1.15rem;
+  letter-spacing: -0.02rem;
+  word-spacing: -0.15rem; }
+
 h1 {
   color: #13c1ac; }
 
@@ -19,23 +30,23 @@ nav li a {
 a {
   color: #00B7FF; }
 
-.all-list-wrapper a h3 {
+.product-item h3 {
   color: #253238; }
 
-.all-list-wrapper a p {
+.product-item p {
   color: #607D8B; }
 
 a:hover,
-.all-list-wrapper a {
+.product-item {
   transition-delay: 0s;
   transition-duration: 0.36s;
   transition-property: all;
   transition-timing-function: line; }
 
-.all-list-wrapper a {
+.product-item {
   position: relative; }
 
-.all-list-wrapper a:hover {
+.product-item:hover {
   top: -2px;
   box-shadow: 0px 3px 5px rgba(37, 50, 56, 0.1); }
 
@@ -72,12 +83,14 @@ nav .last-li p {
   padding: 1rem 0; }
 
 .all-list-wrapper a h3,
+.all-list-wrapper a h4,
 .all-list-wrapper a p {
   margin-left: 10%; }
 
 .product-item {
   width: 22%;
-  background-color: #FAF9F8; }
+  background-color: #FAF9F8;
+  margin-bottom: 1rem; }
 
 .product-item:hover {
   text-decoration: none;
@@ -87,17 +100,46 @@ nav .last-li p {
   width: 80%;
   margin: 10% 0 10% 10%; }
 
+.product-box {
+  padding: 3rem 0 4rem; }
+
+.product-box img {
+  width: 60%;
+  height: 400px;
+  object-fit: contain; }
+
+.product-box a {
+  display: block; }
+
+.product-box h4::after,
+.price::after {
+  content: " €"; }
+
+.col-right {
+  width: 40%; }
+
 .btn {
+  width: 80%;
   padding: 1rem 2rem;
   margin: 1rem 0 2rem;
   background-color: gray;
-  color: beige;
+  color: #fff;
   cursor: pointer; }
+
+.green {
+  background-color: #13c1ac; }
+
+.green:hover {
+  color: #fff; }
+
+.add-fav  {
+  margin-bottom: 2rem; }
 
 #map {
   display: block;
   width: 100%;
-  height: 50vh; }
+  height: 50vh;
+  border-radius: 5px solid; }
 
 #filter-link {
   visibility: hidden; }
@@ -108,9 +150,6 @@ nav .last-li p {
 
 .visible {
   visibility: visible !important; }
-
-.price::after {
-  content: " €"; }
 
 @media (max-width: 700px) {
   .product-item {

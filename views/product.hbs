@@ -1,18 +1,19 @@
 <h2> Product </h2>
 
-<div class="all-list-wrapper">
+<div class="all-list-wrapper product-box">
   <img src="{{theProduct.imgPath}}" alt="{{theProduct.imgName}}">
-  <h3>{{ theProduct.title }}</h3>
-  <p>{{ theProduct.description }}</p>
-  <h4>{{ theProduct.price }}</h4>
-  <a href="/profile/pending/{{theProduct._id}}">Buy</a>
-  <a href="/favorite/{{theProduct._id}}">Add to favorites</a>
-  <p>Latitude:
-    <span id="lat">{{theProduct.APIlocation.coordinates.[1]}}</span>
-  </p>
-  <p>Length:
-    <span id="lon">{{theProduct.APIlocation.coordinates.[0]}}</span>
-  </p>
+  <div class="col-right">
+    <h3>{{ theProduct.title }}</h3>
+    <p>{{ theProduct.description }}</p>
+    <h4>{{ theProduct.price }}</h4>
+    <a href="/profile/pending/{{theProduct._id}}" class="btn green">Buy</a>
+    <a href="/favorite/{{theProduct._id}}" class="add-fav">Add to favorites</a>
+    <p>Latitude:
+      <span id="lat">{{theProduct.APIlocation.coordinates.[1]}}</span>
+    </p>
+    <p>Length:
+      <span id="lon">{{theProduct.APIlocation.coordinates.[0]}}</span>
+    </p>
+  </div>
 </div>
-
 <div id="map"></div>
