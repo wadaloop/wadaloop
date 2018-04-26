@@ -47,7 +47,7 @@ cartRoutes.get("/", ensureLoggedIn("/login"), (req, res, next)=>{
       return acc+p.product.price
     },0)
     console.log(totalPrice)
-    res.render('cart', { allCarts: carts, totalPrice })
+    res.render('cart', { allCarts: carts, totalPrice   })
   })
   .catch(e=>console.log(e))
 });

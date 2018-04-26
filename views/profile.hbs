@@ -9,57 +9,56 @@
   </div>
 </form> --}}
 
-
-<div class="box-section">
-  <h2>Favorites</h2>
-  <a href="/favorite">Ver mis Favoritos!</a>
+<div class="box-section filter-box">
+  
   <a href="/cart">view my Cart!</a>
+  <h2>Favorites</h2>
+  <a href="/favorite" class="filter green">My favorites list</a>
 </div>
 
 <div class="box-section">
-<h2>Pon un nuevo Producto a la venta!</h2>
 <form action="/profile/{{user._id}}" method="POST" enctype="multipart/form-data">
-<h3>New Product</h3>
-  <div>
+  <h2>Sell a new Product</h2>
+  <div class="form-line">
     <label for="productTitle">Product title:</label>
     <input type="text" name="productTitle">
   </div>
-  <div>
+  <div class="form-line">
     <label for="productDescription">Description:</label>
     <input type="text" name="productDescription">
   </div>
-  <div>
+  <div class="form-line">
     <label for="productPrice">Price:</label>
     <input type="text" name="productPrice">
   </div>
-  <div>
+  <div class="form-line">
     <label for="productPhoto">Photo:</label>
     <input type="file" name="productPhoto">
   </div>
-  <div>
-    <label>Address</label>
+  <div class="form-line">
+    <label>Address:</label>
     <input type="text" name="latitude" placeholder="Latitude">
     <input type="text" name="longitude" placeholder="Longitude">
   </div>
   <div>
-    <input type="submit" class="btn" value="Upload product">
+    <input type="submit" class="btn update" value="Upload product">
   </div>
 </form>
 </div>
 
 <div class="box-section">
-<h2>Mis Productos a la Venta</h2>
+<h2>My products for sale</h2>
 <ul>
   {{#each productsTrim}}
   <p>{{this.title}}</p>
   <img src="{{this.imgPath}}" alt="">
   <a href="/product/{{this._id}}">view Product</a>
-  <form action="/profile/{{this._id}}/delete" method="post">
-    <button type="submit">Delete</button>
-  </form>  
   <form action="/profile/{{_id}}/edit" method="get">
-    <button type="submit">Edit</button>
+    <input type="submit" class="btn edit" value="Edit">
   </form>
+  <form action="/profile/{{this._id}}/delete" method="post">
+    <input type="submit" class="btn delete" value="Delete">
+  </form>  
   {{!-- <form action="/favorite/{{_id}}/delete" method="post">
     <button type="submit">Delete</button>
   </form>  --}} 
