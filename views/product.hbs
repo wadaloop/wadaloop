@@ -6,7 +6,7 @@
     <h3>{{ theProduct.title }}</h3>
     <p>{{ theProduct.description }}</p>
     <h4>{{ theProduct.price }}</h4>
-    <a href="/profile/pending/{{theProduct._id}}" class="btn green">Buy</a>
+    <a href="/cart/{{theProduct._id}}" class="btn green">Buy</a>
     <a href="/favorite/{{theProduct._id}}" class="add-fav">Add to favorites</a>
     <p>Latitude:
       <span id="lat">{{theProduct.APIlocation.coordinates.[1]}}</span>

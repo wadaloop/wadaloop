@@ -100,6 +100,9 @@ app.use('/product', productRoutes);
 
 const favoriteRoutes = require('./routes/favorite');
 app.use('/favorite', favoriteRoutes);
+
+const cartRoutes = require('./routes/cart');
+app.use('/cart', cartRoutes);
       
 
 module.exports = app;

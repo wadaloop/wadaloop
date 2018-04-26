@@ -1,13 +1,14 @@
-<h2>Favorites</h2>
+<h2>Shopping Cart</h2>
+{{totalPrice}}
 <ul>
-  {{#each favorites}}
+
+  {{#each allCarts}}
   <p>{{this.product.title}}</p>
   <p>{{this.product.price}}</p>
   <a href="/product/{{this.product._id}}">view Product</a>
   <img src="{{this.product.imgPath}}" alt="">
-  <form action="/favorite/{{_id}}/delete" method="post">
+  <form action="/cart/{{_id}}/delete" method="post">
     <button type="submit">Delete</button>
   </form>
   {{/each}}
 </ul>
-
