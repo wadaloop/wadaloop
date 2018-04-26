@@ -14,6 +14,7 @@ h2 {
   font-size: 2rem;
   letter-spacing: -0.02rem;
   word-spacing: -0.15rem;
+  line-height: 2.5rem;
 }
 
 .product-item h4 {
@@ -85,6 +86,8 @@ nav .last-li p { display: inline; }
 
 .product-item img { width: 80%; margin: 10% 0 10% 10%; }
 
+.m-l-10 { margin: 10% 0 10% 10%; }
+
 .product-box { padding: 3rem 0 4rem; }
 
 .product-box img {
@@ -100,17 +103,30 @@ nav .last-li p { display: inline; }
 
 .col-right { width: 40%; }
 
+.form-line { margin-bottom: 0.7rem; }
+.form-line label {
+  width: 12vw;
+}
+
 .btn {
   width: 80%;
-  padding: 1rem 2rem;
+  padding: 0.6rem 1.2rem;
   margin: 1rem 0 2rem;
   background-color: gray;
   color: #fff;
   cursor: pointer;
+  text-transform: uppercase;
+  font-size: 0.8rem;
 }
 
 .green { background-color: #13c1ac; }
 .green:hover { color: #fff; }
+.edit { width: auto; background-color: darkslategray; }
+.edit:hover { color: #fff; }
+.delete { width: auto; background-color: darkred; }
+.delete:hover { color: #fff; }
+.update { width: auto; background-color: royalblue; }
+.update:hover { color: #fff; }
 
 .add-fav { margin-bottom: 2rem; }
 
@@ -122,7 +138,8 @@ nav .last-li p { display: inline; }
 }
 
 #filter-link { visibility: hidden; }
-.filter { margin-bottom: 2rem; background-color: lightyellow; padding: 0.5rem 1.2rem; }
+.filter-box { display: flex; justify-content: space-between; }
+.filter { margin-bottom: 2rem; color: #fff; padding: 0.5rem 1.2rem; }
 
 .visible {
   visibility: visible!important;
@@ -133,6 +150,11 @@ footer {
   padding: 2rem 3rem;
   background-color: #253238;
   color: #AEAEAE;
+}
+
+.box-section {
+  border-bottom: 1px dotted lightgray;
+  margin: 1rem 0;
 }
 
 @media (max-width: 700px) {
