@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').load();
 
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
@@ -16,7 +16,7 @@ const flash = require("connect-flash");
 
 mongoose.Promise = Promise;
 mongoose
-  .connect(MONGODB_URL, { useMongoClient: true })
+  .connect(process.env.MONGO_URL, { useMongoClient: true })
   .then(() => {
     console.log('Connected to Mongo!')
   }).catch(err => {
