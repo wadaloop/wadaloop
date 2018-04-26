@@ -16,7 +16,7 @@ const flash = require("connect-flash");
 
 mongoose.Promise = Promise;
 mongoose
-  .connect('mongodb://localhost/wadaloop', { useMongoClient: true })
+  .connect(MONGODB_URL, { useMongoClient: true })
   .then(() => {
     console.log('Connected to Mongo!')
   }).catch(err => {
