@@ -7,7 +7,7 @@ const User = require("../models/User");
 const ensureLoggedIn = require("../middlewares/ensureLoggedIn");
 
 //-------------CREATE CART PRODUCT---------------------
-cartRoutes.get("/:id", ensureLoggedIn("/login"), (req, res, next) => {
+cartRoutes.get("/:id", ensureLoggedIn("/auth/login"), (req, res, next) => {
   const cartInfo = {
     cartProduct: req.body.cart,
     user: req.session.passport.user,
