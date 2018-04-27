@@ -106,7 +106,8 @@ nav .last-li p {
 .product-item {
   width: 22%;
   background-color: #faf9f8;
-  margin-bottom: 1rem; }
+  margin-bottom: 1rem;
+  color: #13c1ac; }
 
 .product-item:hover {
   text-decoration: none;
