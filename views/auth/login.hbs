@@ -4,11 +4,11 @@
 <form action="/auth/login" method="POST" id="form-container">
 <div class="form-line">
   <label for="email-imput">email</label>
-  <input id="email-input" type="email" name="username" placeholder="e.g., padre@espiritusanto.com">
+  <input id="email-input" type="email" name="username" placeholder="E.g., padre@espiritusanto.com" required>
 </div>
 <div class="form-line">
   <label for="password">Password</label>
-  <input id="password" type="password" name="password" placeholder="Your password">
+  <input id="password" type="password" name="password" placeholder="Your password" required>
 </div>
 <div class="form-line">
   {{#if message }}
